@@ -1,0 +1,2 @@
+# 第一列是学号，第二列是密码 第三列填sendkey(选填，用于发送结果)，每列中间一个空格
+SY2121XXX MYPASSWORD XXXXXXXXXXXXXXXXXXXXXXX
