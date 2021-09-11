@@ -6,7 +6,7 @@
 
 ```# pip install requests```
 ## 修改配置文件
-1、在user_info.txt文件中填入学号和密码，可填入多名学生的信息，若需要微信推送，第三列需要填入server酱的SendKey（见官网 [https://sct.ftqq.com/](https://sct.ftqq.com/)）
+1、在user_info.txt文件中填入学号和密码，可填入多名学生的信息，若需要微信推送，第三列(可选)需要填入server酱的SendKey（见官网 [https://sct.ftqq.com/](https://sct.ftqq.com/)）
 
 2、地理信息保存在data.py的geo_api_info中，默认使用了校内的地理位置，可以不修改
 
