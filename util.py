@@ -19,13 +19,14 @@ def task(username, password, login_header, info_header, save_data, SendKey):
     try:
         response = session.post(login_url, headers=login_header, data=from_data)
         message = dict(json.loads(response.text))["m"]
+        print(response.text)
         if response.status_code == 200:
             # 获取信息
             response = session.get(info_url, headers=info_header)
             info_data = dict(json.loads(response.text))
-            info_data["d"]["info"]["geo_api_info"] = dict(json.loads(info_data["d"]["info"]["geo_api_info"]))
+            # info_data["d"]["info"]["geo_api_info"] = dict(json.loads(info_data["d"]["info"]["geo_api_info"]))
             # 设置打卡信息
-            geo_api_info["dEa"] = info_data['d']["info"]["geo_api_info"]["dEa"]
+            # geo_api_info["dEa"] = info_data['d']["info"]["geo_api_info"]["dEa"]
             save_data["geo_api_info"] = geo_api_info
             save_data["realname"] = info_data["d"]["uinfo"]["realname"]
             save_data["number"] = info_data["d"]["uinfo"]["role"]["number"]
@@ -34,7 +35,9 @@ def task(username, password, login_header, info_header, save_data, SendKey):
             save_data["date"] = info_data["d"]["info"]["date"]
             save_data["id"] = info_data["d"]["info"]["id"]
             # 发送打卡请求
+            print(info_data)
             response = session.post(save_url, headers=info_header, data=save_data)
+            print(response.text)
             message = message + '\n' + dict(json.loads(response.text))["m"] + '\n'
     except Exception as e:
         message = "打卡失败！\n" + e
