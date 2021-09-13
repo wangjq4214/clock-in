@@ -18,7 +18,9 @@ def task(username, password, login_header, info_header, save_data, SendKey):
     }
     try:
         response = session.post(login_url, headers=login_header, data=from_data)
-        message = dict(json.loads(response.text))["m"]
+        res_json = dict(json.loads(response.text))
+        message_login = username + ": " + ("登录成功！" if int(res_json["e"]) == 0 else res_json["m"])
+        print(message_login)
         if response.status_code == 200:
             # 获取信息
             response = session.get(info_url, headers=info_header)
@@ -32,12 +34,13 @@ def task(username, password, login_header, info_header, save_data, SendKey):
             save_data["date"] = info_data["d"]["info"]["date"]
             save_data["id"] = info_data["d"]["info"]["id"]
             # 发送打卡请求
-            print(info_data)
             response = session.post(save_url, headers=info_header, data=save_data)
-            print(response.text)
-            message = message + '\n' + dict(json.loads(response.text))["m"] + '\n'
+            res_json = dict(json.loads(response.text))
+            message_daka = username + ": " + ("打卡成功！" if int(res_json["e"]) == 0 else res_json["m"])
+            print(message_daka)
+            message = message_login + "\n\n" + message_daka
     except Exception as e:
-        message = "打卡失败！\n" + e
+        message = "打卡失败！\n\n" + e
     finally:
         send_result_to_wechat(message, SendKey)
     session.close()
