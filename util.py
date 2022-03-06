@@ -52,7 +52,7 @@ def task(username, password, login_header, info_header, save_data, SendKey):
             success = True
         except Exception as e:
             try_times += 1
-            message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 打卡失败！" + str(e))
+            message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 打卡失败！ Exception: " + str(e))
             if try_times <= all_try_times:
                 message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 正在重新尝试，第{}次/共{}次".format(try_times, all_try_times))
             else:
