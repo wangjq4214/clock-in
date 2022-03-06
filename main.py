@@ -12,13 +12,13 @@ if __name__ == "__main__":
     flag = 0
     # 多线程处理
     while True:
-        if datetime.now().hour == 17 and flag == 0:
+        if datetime.now().hour >= 17 and flag == 0:
             with ThreadPoolExecutor(max_workers=10) as executor:
                 for username, password, SendKey in parse_info():
                     if username and password:
                         executor.submit(task, username, password, login_header, info_header, save_data, SendKey)
                 flag = 1
         else:
-            if datetime.now().hour != 17:
+            if datetime.now().hour < 17:
                 flag = 0
-            sleep(10)
+        sleep(10)
