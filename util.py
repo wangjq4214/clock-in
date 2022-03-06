@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from data import geo_api_info, info_url, login_url, save_url, all_try_times
+import time
 
 def split_data(data_str):
     data_dict = dict()
@@ -15,7 +16,7 @@ def execution(session, username, form_data, login_header, info_header, save_data
     response = session.post(login_url, headers=login_header, data=form_data)
     res_json = dict(json.loads(response.text))
     message_login = username + ": " + ("登录成功！" if int(res_json["e"]) == 0 else res_json["m"])
-    message.append(message_login)
+    message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + message_login)
     if response.status_code == 200:
         # 获取信息
         response = session.get(info_url, headers=info_header)
@@ -32,8 +33,7 @@ def execution(session, username, form_data, login_header, info_header, save_data
         response = session.post(save_url, headers=info_header, data=save_data)
         res_json = dict(json.loads(response.text))
         message_daka = username + ": " + ("打卡成功！" if int(res_json["e"]) == 0 else res_json["m"])
-        message.append(message_daka)
-        a = 1/0
+        message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + message_daka)
         # message += message_login + "\n\n" + message_daka
 
 
@@ -52,11 +52,11 @@ def task(username, password, login_header, info_header, save_data, SendKey):
             success = True
         except Exception as e:
             try_times += 1
-            message.append(username+": 打卡失败！" + str(e))
+            message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 打卡失败！" + str(e))
             if try_times <= all_try_times:
-                message.append(username+": 正在重新尝试，第{}次/共{}次".format(try_times, all_try_times))
+                message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 正在重新尝试，第{}次/共{}次".format(try_times, all_try_times))
             else:
-                message.append(username+": 请手动打卡！")
+                message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 请手动打卡！")
         finally:
             session.close()
     message = "\n".join(message)
