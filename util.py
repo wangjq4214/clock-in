@@ -59,7 +59,7 @@ def task(username, password, login_header, info_header, save_data, SendKey):
                 message.append(time.strftime(r'(%Y/%m/%d %H:%M:%S)',time.localtime(time.time())) + username+": 请手动打卡！")
         finally:
             session.close()
-    message = "\n".join(message)
+    message = "\n\n".join(message)
     print(message)
     send_result_to_wechat(message, SendKey)
 
