@@ -32,7 +32,7 @@
 
 不知道能不能设置在家打卡，假期的时候试试
 
-1、在Goog Map中搜索对应位置，得到相应的经纬度信息
+1、在Goog Map中搜索对应位置，得到相应的经纬度信息，也可以用[高德地图API](https://lbs.amap.com/tools/picker)
 ![google地图](imgs/1.png)
 
 2、使用这个URL：[https://restapi.amap.com/v3/geocode/regeo?location=116.2744773,40.1547703&key=729923f88542d91590470f613adb27b5&s=rsv3&language=zh_cn&extensions=base&callback=jsonp_0_&platform=JS&logversion=2.0&appname=https%3A%2F%2Fapp.buaa.edu.cn%2Fsite%2FbuaaStudentNcov%2Findex&csid=B9E00096-B762-4063-A7D4-19DF9957EE2B&sdkversion=1.4.20](https://restapi.amap.com/v3/geocode/regeo?location=116.2744773,40.1547703&key=729923f88542d91590470f613adb27b5&s=rsv3&language=zh_cn&extensions=base&callback=jsonp_0_&platform=JS&logversion=2.0&appname=https%3A%2F%2Fapp.buaa.edu.cn%2Fsite%2FbuaaStudentNcov%2Findex&csid=B9E00096-B762-4063-A7D4-19DF9957EE2B&sdkversion=1.4.20)
