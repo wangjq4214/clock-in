@@ -2,9 +2,9 @@
 
 ## 运行环境
 
-### 1、需要python3(建议用python3.8)和requests库
+1、需要python3(建议用python3.8)和requests库
 
-### 2、安装requests库
+2、安装requests库
 
 ```# pip install requests```
 
