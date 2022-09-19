@@ -30,8 +30,8 @@ def execution(session, username, form_data, login_header, info_header, save_data
         save_data["date"] = info_data["d"]["info"]["date"]
         save_data["id"] = info_data["d"]["info"]["id"]
         save_data["province"] = geo_api_info['addressComponent']['province']
-        save_data["city"] = geo_api_info['addressComponent']['province']
-        save_data["area"] = save_data['province'] + ' ' + geo_api_info['addressComponent']['district']
+        save_data["city"] = save_data['province'] if geo_api_info['addressComponent']['city'] == '' else geo_api_info['addressComponent']['city']
+        save_data["area"] = save_data['city'] + ' ' + geo_api_info['addressComponent']['district']
         save_data['address'] = geo_api_info['formattedAddress']
         # 发送打卡请求
         response = session.post(save_url, headers=info_header, data=save_data)
