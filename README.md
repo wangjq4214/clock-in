@@ -10,9 +10,11 @@
 
 ## 修改配置文件
 
-1、在```user_info.txt```文件中填入学号和密码，可填入多名学生的信息，若需要微信推送，第三列(可选)需要填入server酱的SendKey（见官网 [https://sct.ftqq.com/](https://sct.ftqq.com/)）
+1、在```user_info.txt```文件中填入学号和密码，可填入多名学生的信息，若需要微信推送，第三列(可选)需要填入server酱的SendKey（见官网 [https://sct.ftqq.com/](https://sct.ftqq.com/)）；
 
-2、地理信息保存在data.py的geo_api_info中，默认使用了校园路校区的地理位置。如果要把位置改成沙河校区，在data.py中把geo_api_info注释，再把下面沙河校区的geo_api_info解除注释
+2、地理信息保存在```data.py```的```geo_api_info```中，默认使用了校园路校区的地理位置；
+
+3、如果要把位置改成沙河校区，在```data.py```中把```geo_api_info```注释，再把下面沙河校区的```geo_api_info```解除注释。
 
 ## 运行
 
